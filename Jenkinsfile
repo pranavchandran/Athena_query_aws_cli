@@ -17,7 +17,7 @@ pipeline {
                 script {
                     bat
                     '''
-                    python athena_query.py'
+                    python athena_query.py
                     '''
                 }
             }
