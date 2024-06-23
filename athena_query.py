@@ -4,11 +4,20 @@ AWS CLI configuration in the system
 """
 
 import boto3
+import os
 
-# Boto3 will automatically use AWS credentials stored in your environment
+# take the cred from env
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 
-# Create an Athena client
-client = boto3.client('athena', region_name='us-east-1')
+# session
+session = boto3.Session(
+    aws_access_key_id = aws_access_key_id,
+    aws_secret_access_key = aws_secret_access_key,
+    region_name='us-east-1'
+)
+
+client = session.client('athena')
 
 # Example function to run an Athena query
 def run_athena_query(query, database, output_location):
