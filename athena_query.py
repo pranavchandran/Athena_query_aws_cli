@@ -10,6 +10,10 @@ import os
 aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
 aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY')
 
+# split the cred from env
+aws_access_key_id = aws_access_key_id.split(':')[1]
+aws_secret_access_key = aws_secret_access_key.split(':')[1]
+
 # session
 session = boto3.Session(
     aws_access_key_id = aws_access_key_id,
